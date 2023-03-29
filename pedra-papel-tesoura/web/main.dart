@@ -82,6 +82,7 @@ void mostrarResultado(Resultado resultado) {
   divResultado.append(
     ButtonElement()
       ..text = 'Jogar Novamente'
+      ..type = 'button'
       ..onClick.listen(jogarNovamente),
   );
 }
