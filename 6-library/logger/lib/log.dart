@@ -23,5 +23,29 @@ void _log(_CoresANSI cor, Object object) {
   io.stdout.writeln('${_ansiCores[cor]}$object$_resetarCor');
 }
 
-// o trecho '\x1b[31m' define a cor vermelha
-// o trecho '\x1b[m' volta a cor padrão
+class Logger {
+  Logger({required this.nivel});
+  final Nivel nivel;
+
+  bool _habilitado(Nivel nivelHabilitado) {
+    return nivelHabilitado.index >= nivel.index;
+  }
+
+  void info(Object object) {
+    if (_habilitado(Nivel.info)) {
+      _log(_CoresANSI.verde, '[INFO] $object');
+    }
+  }
+
+  void warning(Object object) {
+    if (_habilitado(Nivel.warning)) {
+      _log(_CoresANSI.azul, '[WARNING] $object');
+    }
+  }
+
+  void error(Object object) {
+    if (_habilitado(Nivel.error)) {
+      _log(_CoresANSI.vermelho, '[ERROR] $object');
+    }
+  }
+}
