@@ -24,8 +24,13 @@ void _log(_CoresANSI cor, Object object) {
 }
 
 class Logger {
-  const Logger({required this.nivel});
+  const Logger({
+    required this.nivel,
+    this.printer = const Printer(),
+  });
+
   final Nivel nivel;
+  final Printer printer;
 
   bool _habilitado(Nivel nivelHabilitado) {
     return nivelHabilitado.index >= nivel.index;
@@ -33,19 +38,33 @@ class Logger {
 
   void info(Object object) {
     if (_habilitado(Nivel.info)) {
-      _log(_CoresANSI.verde, '[INFO] $object');
+      printer._log(_CoresANSI.verde, '[INFO] $object');
     }
   }
 
   void warning(Object object) {
     if (_habilitado(Nivel.warning)) {
-      _log(_CoresANSI.azul, '[WARNING] $object');
+      printer._log(_CoresANSI.azul, '[WARNING] $object');
     }
   }
 
   void error(Object object) {
     if (_habilitado(Nivel.error)) {
-      _log(_CoresANSI.vermelho, '[ERROR] $object');
+      printer._log(_CoresANSI.vermelho, '[ERROR] $object');
     }
+  }
+}
+
+class Printer {
+  const Printer({this.inicio = '', this.fim = ''});
+  final String inicio;
+  final String fim;
+
+  void _log(_CoresANSI cor, Object object) {
+    io.stdout.writeln(
+      '${_ansiCores[cor]}'
+      '$inicio$object$fim'
+      '$_resetarCor',
+    );
   }
 }
