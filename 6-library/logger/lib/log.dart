@@ -2,6 +2,8 @@ library logger;
 
 import 'dart:io' as io;
 
+part 'printer.dart';
+
 enum _CoresANSI { verde, vermelho, azul }
 
 enum Nivel { info, warning, error }
@@ -52,19 +54,5 @@ class Logger {
     if (_habilitado(Nivel.error)) {
       printer._log(_CoresANSI.vermelho, '[ERROR] $object');
     }
-  }
-}
-
-class Printer {
-  const Printer({this.inicio = '', this.fim = ''});
-  final String inicio;
-  final String fim;
-
-  void _log(_CoresANSI cor, Object object) {
-    io.stdout.writeln(
-      '${_ansiCores[cor]}'
-      '$inicio$object$fim'
-      '$_resetarCor',
-    );
   }
 }
