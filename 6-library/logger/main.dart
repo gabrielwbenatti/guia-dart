@@ -1,7 +1,8 @@
-import 'lib/log.dart' as logger;
+import 'lib/log.dart';
 
 void main() {
-  logger.error('Este é um erro');
-  logger.warning('Este é um warning');
-  logger.info('Este é uma info');
+  const logger = Logger(nivel: Nivel.warning);
+  logger.error('Erro');
+  logger.warning('Warning');
+  logger.info('Info');
 }

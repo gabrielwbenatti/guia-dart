@@ -24,7 +24,7 @@ void _log(_CoresANSI cor, Object object) {
 }
 
 class Logger {
-  Logger({required this.nivel});
+  const Logger({required this.nivel});
   final Nivel nivel;
 
   bool _habilitado(Nivel nivelHabilitado) {
