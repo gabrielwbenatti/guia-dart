@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:jogo/src/partida.dart';
 import 'package:jogo/src/resultado.dart';
+// import 'package:logger/logger.dart';
 
 Partida configurarPartida() {
   return Partida()
@@ -28,6 +29,11 @@ void inicializarReferencias() {
 }
 
 void main() {
+  // const logger = Logger(nivel: Nivel.info);
+  // logger.error('error');
+  // logger.warning('warning');
+  // logger.info('info');
+
   inicializarReferencias();
   final partida = configurarPartida();
 
