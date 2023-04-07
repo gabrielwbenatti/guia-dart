@@ -1,13 +1,9 @@
 name: logger
-description: A starting point for Dart libraries or applications.
+description: Um package pata facilitar criação de logs nas aplicações
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
-
-# dependencies:
-#   path: ^1.8.0
 
 dev_dependencies:
   lints: ^2.0.0
