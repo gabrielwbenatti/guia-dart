@@ -1,5 +1,5 @@
-import 'dart:io' as io;
 import 'log.dart';
+import 'printer_console.dart' if (dart.library.io) 'printer_io.dart' as printer;
 
 class Printer {
   const Printer({this.inicio = '', this.fim = ''});
@@ -7,10 +7,6 @@ class Printer {
   final String fim;
 
   void log(Cores cor, Object object) {
-    io.stdout.writeln(
-      '${ansiCores[cor]}'
-      '$inicio$object$fim'
-      '$resetarCor',
-    );
+    printer.log('${ansiCores[cor]}' '$inicio' '$object' '$fim' '$resetarCor');
   }
 }
