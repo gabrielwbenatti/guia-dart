@@ -6,6 +6,7 @@ enum Cores { verde, vermelho, azul }
 
 enum Nivel { info, warning, error }
 
+/// Código ANSI para resetar a cor do terminal
 const resetarCor = '\x1b[m';
 
 // Tabela com cores: https://talyian.github.io/ansicolors/
@@ -21,6 +22,15 @@ class Logger {
     this.printer = const Printer(),
   });
 
+  /// Controla o [Nivel] permitido do log para ser impresso, quanto mais crítico
+  /// mais restrito é, e menos níveis são impressos
+  /// Abaixo opções ordenadas pelo menos crítico
+  ///
+  /// * [Nivel.info] significa que serão impressos todos os níveis
+  /// * [Nivel.warning] são impressos os logs de [Nivel.warning]
+  ///   e [Nivel.error]
+  /// * [Nivel.error] é o nível mais restrito, e apenas
+  ///   [Nivel.error] são impressos
   final Nivel nivel;
   final Printer printer;
 
